@@ -27,7 +27,7 @@ function App() {
 
   const getTweetContent = () =>
     `"${jsonResponse.content}" are the famous words of ${jsonResponse.author}.
-For more quotes visit ${window.location.hostname} made by  @AromalAnil5`;
+For more quotes visit http://${window.location.hostname} made by  @AromalAnil5`;
 
   return (
     <main>
