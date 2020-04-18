@@ -54,7 +54,7 @@
   padding: 0.65rem 1.7rem;
   font-weight: 500;
   font-size: 1.1rem;
-  border-radius: 8px;
+  border-radius: .5rem;
   font-family: "Work Sans", sans-serif;
   background-color: #d8345f;
   color: white;
@@ -74,9 +74,21 @@
 
 @media screen and (max-width: 600px) {
   html {
-    font-size: 3vw;
+    font-size: 3.2vw;
   }
   .quote-card {
     width: 80vw;
+  }
+  .quote-card * {
+    width: 100%;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .bottom-row{
+      width: 70vw;
+      justify-content: space-between;
+  }
+  .btn{
+      transform: scale(1.2);
   }
 }

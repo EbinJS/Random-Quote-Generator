@@ -11,7 +11,7 @@ function App() {
 
   const fetchQuote = async () => {
     let response = await (await fetch("https://api.quotable.io/random")).json();
-    response.content=response.content.replace(/[;]/g, "")
+    response.content=response.content.replace(/[;]/g, "");
     if(response.content.length>240){
       console.log('Content exceeds character limit');
       fetchQuote()
