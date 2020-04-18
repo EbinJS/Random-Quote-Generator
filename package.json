@@ -1,6 +1,12 @@
 {
   "name": "random-quote-generator",
-  "version": "0.1.0",
+  "description": "A web app which displays random quotes from famous people",
+  "author": {
+    "name": "Aromal Anil",
+    "email": "contact@aromalanil.me",
+    "url": "https://aromalanil.me"
+  },
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
