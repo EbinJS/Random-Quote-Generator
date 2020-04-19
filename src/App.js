@@ -6,24 +6,16 @@ import "./App.css";
 function App() {
   const [jsonResponse, setJsonResponse] = useState({
     content: "Loading...",
-    author: "",
+    author: "......",
   });
 
-  const fetchQuote = async () => {
-    let response = await (await fetch("https://api.quotable.io/random")).json();
-    response.content=response.content.replace(/[;]/g, "");
-    if(response.content.length>240){
-      console.log('Content exceeds character limit');
-      fetchQuote()
-    }
-    else{
-      setJsonResponse(response);
-    }
-  };
+  const handleNewQuoteButton = async () => {
+    setJsonResponse(await fetchQuote());
+  }
 
   useEffect(() => {
-    fetchQuote();
-  },[]);
+    handleNewQuoteButton();
+  }, []);
 
   const getTweetContent = () =>
     `"${jsonResponse.content}" are the famous words of ${jsonResponse.author}.
@@ -34,7 +26,7 @@ For more quotes visit http://${window.location.hostname} made by  @AromalAnil5`;
       <div id="quote-box">
         <Quote content={jsonResponse.content} author={jsonResponse.author} />
         <div className="bottom-row">
-          <button id="new-quote" onClick={fetchQuote} className="btn">
+          <button id="new-quote" onClick={handleNewQuoteButton} className="btn">
             New Quote
           </button>
           <TweetButton content={getTweetContent()} />
@@ -43,5 +35,17 @@ For more quotes visit http://${window.location.hostname} made by  @AromalAnil5`;
     </main>
   );
 }
+
+const fetchQuote = async (callBack) => {
+  let response = await (await fetch("https://api.quotable.io/random")).json();
+  response.content = response.content.replace(/[;]/g, "");
+  if (response.content.length > 240) {
+    console.log('Content exceeds character limit');
+    fetchQuote();
+  }
+  else {
+    return response;
+  }
+};
 
 export default App;
